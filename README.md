@@ -1,0 +1,2 @@
+# TrainTime-App
+This app will allow the user to input a train with its destination, the time it starts running in 24 hour method (military time), and how frequently it runs. When they hit the submit button at the bottom of the page they will see the new train append to the bottom of the table and will then see on the table the train's name, destination, frequency, next arrival time, and how many minutes until that next arrival time.
