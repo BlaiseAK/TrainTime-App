@@ -22,6 +22,19 @@ $(document).on("click", ".btn-primary", function() {
     var trainStart = $("#timeInput").val().trim();
     var trainFrequency = $("#frequencyInput").val().trim();
 
+    // Create a formula to put the trainStart time to be the most current time of arrival and the time modulus to the next arrival
+
+    var trainStartConverted = moment(trainStart, "HH:mm").subtract(1, "years");
+    console.log(trainStartConverted);
+
+    // current time
+    var currentTime = moment();
+    console.log("Current time: "+ moment(currentTime).format("hh:mm"));
+
+    // 
+
+
+
     // Create an object to store our new variables inside of.
     var newTrain = {
         name: trainName,
