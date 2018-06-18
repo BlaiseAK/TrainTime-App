@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    color: #132e32;
+    
+}
+
+body {
+    background: #53A2BE;
+    align-content: center;
+}
+
+#titleHeader {
+    text-align: center;
+    padding: 30px;
+    margin: 30px auto;
+    background: #1d84b5;
+    border-color: #176087;
+    border-width: 40px;
+    border-radius: 25px;
+}
+
+#trainSchedule {
+    text-align: center;
+    padding: 30px;
+    margin: 30px auto;
+    background: #1d84b5;
+    border-color: #176087;
+    border-width: 40px;
+    border-radius: 25px;
+
+}
+
+#cardInput {
+    padding: 30px;
+    margin: 30px auto;
+    background: #1d84b5;
+    border-color: #176087;
+    border-width: 40px;
+    border-radius: 25px;
+
+}
+
+#addTrainInfo {
+    background: #53a2be;
+}

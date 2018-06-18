@@ -22,16 +22,7 @@ $(document).on("click", ".btn-primary", function() {
     var trainStart = $("#timeInput").val().trim();
     var trainFrequency = $("#frequencyInput").val().trim();
 
-    // Create a formula to put the trainStart time to be the most current time of arrival and the time modulus to the next arrival
-
-    var trainStartConverted = moment(trainStart, "HH:mm").subtract(1, "years");
-    console.log(trainStartConverted);
-
-    // current time
-    var currentTime = moment();
-    console.log("Current time: "+ moment(currentTime).format("hh:mm"));
-
-    // 
+    
 
 
 
@@ -72,15 +63,45 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var dataDestination = childSnapshot.val().destination;
     var dataTime = childSnapshot.val().start;
     var dataFrequency = childSnapshot.val().frequency;
+    
+    // Create a formula to put the trainStart time to be the most current time of arrival and the time modulus to the next arrival
 
+    var trainStartConverted = moment(dataTime, "HH:mm").subtract(1, "years");
+    console.log(trainStartConverted);
+
+    // current time
+    var currentTime = moment();
+    console.log("Current time: "+ moment(currentTime).format("hh:mm"));
+
+    // difference between the times
+    var diffTime = moment().diff(moment(trainStartConverted), "minutes");
+    console.log("Difference in time: " + diffTime);
+
+
+    // time apart (remainder)
+    var remainder = diffTime % dataFrequency;
+    console.log(remainder);
+
+    // Minutes away
+    var minutesAway = dataFrequency - remainder;
+    console.log("Minutes till train: " + minutesAway);
+
+    // Next Arrival Time
+    var nextTrain = currentTime.add(minutesAway, "minutes");
+    console.log("Arrival time: " + moment(nextTrain).format("hh:mm"));
+    var dataTrainTime = moment(nextTrain).format("LT");
+    
     // See if the information is calling back
     console.log(dataName);
     console.log(dataDestination);
     console.log(dataTime);
     console.log(dataFrequency);
+    console.log(nextTrain);
+    console.log(minutesAway);
+
 
     // Add each train's data into the table
     // empMonths needs to be changed to next arrival time and empBilled needs to be Minutes away
-  $("#trainTable > tbody").append("<tr><td>" + dataName + "</td><td>" + dataDestination + "</td><td>" + dataFrequency + "</td><td>" + empMonths + "</td><td>" + empBilled + "</td></tr>");
+  $("#trainTable > tbody").append("<tr><td>" + dataName + "</td><td>" + dataDestination + "</td><td>" + dataFrequency + "</td><td>" + dataTrainTime + "</td><td>" + minutesAway + "</td></tr>");
 
 })

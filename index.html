@@ -17,6 +17,7 @@
         crossorigin="anonymous"></script>
     <!-- Firebase link -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 
@@ -24,7 +25,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" id="titleHeader">
                 <!-- Header area-->
                 <h1>Train tracker!</h1>
                 <br>
@@ -34,7 +35,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- Table of trains goes here -->
-                <div class="card">
+                <div class="card" id="trainSchedule">
                     <div class="card-title">
                         <h4>Current Train Schedules</h4>
                     </div>
@@ -60,7 +61,7 @@
         <div class="row">
             <div class="col-md-12">
                 <!-- Form fill out will go here -->
-                <div class="card">
+                <div class="card" id="cardInput">
                     <div class="card-header">
                         Please enter your favorite train information below!
                     </div>
@@ -75,7 +76,7 @@
                                 <input type="location" class="form-control" id="destinationInput" placeholder="San Fransisco">
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlInput1">Start time</label>
+                                <label for="exampleFormControlInput1">Start time (Military - 24 hour time only)</label>
                                 <input type="time" class="form-control" id="timeInput" placeholder="23:59">
                             </div>
                             <div class="form-group">
